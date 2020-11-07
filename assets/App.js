@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { songList, playList } from './Constant';
+import { songList, playList } from './constant';
 import Headers from './components/Headers';
 import MenuBar from './components/MenuBar';
 import SongList from './components/SongList';

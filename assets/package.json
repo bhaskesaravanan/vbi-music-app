@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon node --trace-warnings",
+    "start": "webpack --mode=development --watch --progress --color",
     "build": "webpack --mode=production"
   },
   "author": "",
@@ -16,10 +16,13 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.1"
+    "sass-loader": "^10.0.5",
+    "semantic-ui-react": "^2.0.1",
+    "style-loader": "^2.0.0"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
