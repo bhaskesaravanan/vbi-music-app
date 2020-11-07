@@ -6,7 +6,8 @@ function MenuBar(props) {
 
     function search(e){
       if (e.key === "Enter") {
-        props.searchSongs(songname)
+        props.searchSongs(songname);
+        setSong("");
       }
     }
     return (
@@ -29,6 +30,7 @@ function MenuBar(props) {
                 placeholder='Search Songs...'
                 onChange={(e)=>setSong(e.target.value)}
                 onKeyPress={(e)=>search(e)}
+                value={songname}
               />
             </Menu.Item>
           </Menu.Menu>

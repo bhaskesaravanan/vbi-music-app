@@ -34,6 +34,15 @@
   top: 25px;
   left: 70px;
 }
+.play-list-name {
+  position: relative;
+  display: block;
+  padding: 5px;
+  border-bottom: solid;
+  text-align: left;
+  font-size: larger;
+  cursor: pointer;
+}
 
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

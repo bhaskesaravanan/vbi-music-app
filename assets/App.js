@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { songList, playList } from './constant';
+import * as apis from './Api';
 import Headers from './components/Headers';
 import MenuBar from './components/MenuBar';
 import SongList from './components/SongList';
 import PlayList from './components/Playlist';
 import Paginations from './components/Paginations'
 import CreatePlaylist from './components/popups/CreatePlaylist';
+import PlayListModel from './components/popups/PlayListModel';
 
 export class App extends Component {
   constructor(){
@@ -14,56 +16,107 @@ export class App extends Component {
       activeMenu:'home',
       songloader: false,
       showPlayListSong: false,
-      songList: songList,
-      playListSongs: {
-        2345452:songList
-      },
+      songList: [],
+      playListSongs: {},
       selectedPlayList:'',
-      playLists: playList,
-      createPlaylist: false
+      playLists: [],
+      createPlaylist: false,
+      search: false,
+      showPlayListModel: false,
+      songId: ''
     }
   }
 
-  handleMenu(menu) {
+  async componentDidMount() {
+    let songList = await this.fetchSongs();
+    this.setState({
+      songList
+    })
+  }
+
+  async handleMenu(menu) {
+    await this.fetchPlayList();
     this.setState({
       activeMenu: menu,
       showPlayListSong: false
     })
   }
 
+  async fetchPlayList() {
+    let playListResponse = await apis.fetchPlayList("");
+    if(!playListResponse || !playListResponse.success) 
+      return this.setState({
+        playLists: []
+      });
+    let playLists = playListResponse.playlists;
+    this.setState({
+      playLists
+    });
+  };
+
   goBackToPlaylist() {
     this.setState({
-      showPlayListSong: false
+      showPlayListSong: false,
+      selectedPlayList: '',
+      search: false
     })
   }
-  showPlayListSong(id, showSongs) {
+
+  async showPlayListSong(id, showSongs) {
+    let playListSongs = this.state.playListSongs
+    if(!Object.keys(playListSongs).length || !playListSongs[id]) {
+      let songList = await this.fetchSongs(id);
+      playListSongs[id] = songList
+    }
     this.setState({
+      playListSongs: playListSongs,
       selectedPlayList: id,
       showPlayListSong: showSongs
     });
   }
 
-  deletePlayList(id) {
+  async fetchSongs(playlistId=this.state.selectedPlayList) {
+    let songListResponse = await apis.fetchSongs(playlistId);
+    if(!songListResponse || !songListResponse.success) 
+      return []
+    let songList = songListResponse.song_list;
+    return songList
+  }
+
+  async deletePlayList(id) {
     let listOfPlayList  = this.state.playLists;
+    let payload = {
+      'user_id': '2342'
+    }
+    let playListResponse = await apis.deletePlayList(payload);
+    if(!playListResponse || !playListResponse.success) {
+      console.log('playlist add failed')
+      return 
+    }
     let playList = listOfPlayList.filter(list => list.id !== id)
     this.setState({
       playLists: playList
     });
   }
 
-  showCreatePlaylist(show){
+  showCreatePlaylist(show) {
     this.setState({
       createPlaylist: show
     })
   }
 
-  addPlayList(name) {
+  async addPlayList(name) {
     let listOfPlayList  = [...this.state.playLists];
-    let newPlayList = {
-      id:'2345453',
-      name: name,
-      created_date: "24/7/2020"
+    let payload = {
+      'playlist_name': name,
+      'user_id': ''
     }
+    let playListResponse = await apis.savePlayList(payload);
+    if(!playListResponse || !playListResponse.success) {
+      console.log('playlist add failed')
+      return 
+    }
+    let newPlayList = playListResponse.playlist;
     listOfPlayList.push(newPlayList)
     this.setState({
       playLists: listOfPlayList,
@@ -71,8 +124,76 @@ export class App extends Component {
     });
   }
 
-  searchSongs(search) {
-    console.log(search)
+  async searchSongs(search) {
+    console.log(search);
+    let songList = await this.fetchSongs();
+    this.setState({
+      songList,
+      showPlayListSong: true,
+      search: true
+    });
+  }
+
+  async deleteSongsFromPlaylist(songId) {
+    let { playListSongs, selectedPlayList } = this.state;
+    let payload = {
+      'playlist_id': selectedPlayList,
+      'song_id': songId,
+      'user_id': '234f34'
+    }
+    let playListResponse = await apis.deleteSongsFromPlayList(payload);
+    if(!playListResponse || !playListResponse.success) {
+      console.log('song deletion failed');
+      return ;
+    }
+    let selectedPlayListSong = playListSongs[selectedPlayList];
+    let activeSongs = selectedPlayListSong.filter(song=>song.id!==songId);
+    playListSongs[selectedPlayList] = activeSongs;
+    this.setState({
+      playListSongs
+    });
+  }
+
+  async showPlayListModal(show, songId='') {
+    if(!show) {
+      this.setState({
+        songId,
+        showPlayListModel: show,
+      })
+    }
+    else{
+      if(!this.state.playLists.length) await this.fetchPlayList()
+      this.setState({
+        songId,
+        showPlayListModel: show,
+      });
+    }
+  }
+
+  async addSongsToPlaylist(songId, selectedPlayList) {
+    let { playListSongs, songList } = this.state;
+    let payload = {
+      'song_id': songId,
+      'user_id': '234f34',
+      'playlist_id': selectedPlayList
+    }
+    let playListResponse = await apis.addSongsToPlayList(payload);
+    if(!playListResponse || !playListResponse.success) {
+      console.log('song deletion failed');
+      return ;
+    }
+    let songObject = songList.filter(song => song.id===songId);
+    if(!Object.keys(playListSongs).length || !playListSongs[selectedPlayList].length) {
+      playListSongs[selectedPlayList] = [songObject]
+    }
+    else{
+      playListSongs[selectedPlayList].push(songObject[0]);
+    }
+    this.setState({
+      playListSongs,
+      songId: '',
+      showPlayListModel: false
+    });
   }
 
   render() {
@@ -84,10 +205,13 @@ export class App extends Component {
       songList,
       playListSongs,
       selectedPlayList,
-      createPlaylist
+      createPlaylist,
+      search,
+      showPlayListModel,
+      songId
     } = this.state;
 
-    songList = showPlayListSong ? playListSongs[selectedPlayList]: songList; 
+    songList = showPlayListSong && !search ? playListSongs[selectedPlayList]: songList; 
 
     return (
       <div className="music-app">
@@ -112,7 +236,10 @@ export class App extends Component {
               songloader={songloader} 
               songList={songList}
               showPlayListSong={showPlayListSong}
+              search={search}
               goBackToPlaylist={this.goBackToPlaylist.bind(this)}
+              deleteSongsFromPlaylist={this.deleteSongsFromPlaylist.bind(this)}
+              showPlayListModal={this.showPlayListModal.bind(this)}
             />
           }
           {activeMenu !== 'playList' && songList.length >= 1 &&
@@ -123,6 +250,14 @@ export class App extends Component {
           createPlaylist={createPlaylist}
           showCreatePlaylist={this.showCreatePlaylist.bind(this)}
           addPlayList={this.addPlayList.bind(this)}
+          
+        />
+        <PlayListModel 
+          songId={songId}
+          playLists={playLists}
+          showPlayListModel={showPlayListModel}
+          showPlayListModal={this.showPlayListModal.bind(this)}
+          addSongsToPlaylist={this.addSongsToPlaylist.bind(this)}
         />
       </div>
     )

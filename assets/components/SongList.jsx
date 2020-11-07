@@ -34,7 +34,7 @@ function SongList(props) {
                             props.songList.map(
                                 (song, index) =>{
                                     return(
-                                    <Table.Row key={index}>
+                                    <Table.Row key={song.id}>
                                         <Table.Cell>
                                             {index+1}
                                             </Table.Cell>
@@ -48,11 +48,16 @@ function SongList(props) {
                                             </Table.Cell>
                                             <Table.Cell>{song.artist}</Table.Cell>
                                             <Table.Cell>{song.duration}</Table.Cell>
-                                            {props.showPlayListSong&&
-                                            <Table.Cell>
-                                                <Icon name='close' />
-                                            </Table.Cell>
-                                }
+                                            {props.showPlayListSong && !props.search&&
+                                                <Table.Cell onClick={()=>props.deleteSongsFromPlaylist(song.id)} style={{"cursor": "pointer"}}>
+                                                    <Icon name='close' />
+                                                </Table.Cell>
+                                            }
+                                            {props.showPlayListSong && props.search&&
+                                                <Table.Cell onClick={()=>props.showPlayListModal(true, song.id)} style={{"cursor": "pointer"}}>
+                                                    <Icon name='music' />
+                                                </Table.Cell>
+                                            }
                                     </Table.Row>
                                     )
                                 }
