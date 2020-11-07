@@ -1,3 +1,2 @@
 Flask
-google-cloud-ndb
-google-cloud-logging
+gunicorn
