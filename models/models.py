@@ -109,12 +109,12 @@ class User(db.Model):
         self.created = created
         self.updated = updated
 
-    # def __repr__(self):
-    #     return '<id {}>'.format(self.id)
-    #
-    # def serialize(self):
-    #     return {
-    #         'id': self.id,
-    #         'username': self.username,
-    #         'password': self.password
-    #     }
+    def __repr__(self):
+        return '<id {}>'.format(self.id)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'password': self.password
+        }

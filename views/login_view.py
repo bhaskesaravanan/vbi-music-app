@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 from services.user_services import UserServices
+import logging
 
 LOGIN_VIEW = Blueprint(
     'login_pages',
@@ -22,4 +23,15 @@ def signup():
     return jsonify({
         'success': user_success,
         'user_id': user_id
+    })
+
+@LOGIN_VIEW.route('/login')
+def login():
+    username=request.args.get('username')
+    password=request.args.get('password')
+    user = UserServices.fetch_user(user_name=username)
+    logging.info(user.username)
+
+    return jsonify({
+        'success': True
     })

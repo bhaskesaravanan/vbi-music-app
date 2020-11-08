@@ -20,8 +20,17 @@ class UserServices(object):
             db.session.add(user)
             db.session.commit()
             logging.info(user)
-            # logging.info(user.__repr__())
+            logging.info(user.__repr__())
             return True, 'dfdf'
         except Exception as e:
             logging.info(format_exc())
             return False, ''
+
+    @classmethod
+    def fetch_user(cls, user_name):
+        try:
+            user = User.query().filter_by(username=user_name).first()
+            return user
+        except Exception as e:
+            logging.info(format_exc())
+            return False
