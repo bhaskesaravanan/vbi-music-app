@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+db = object
 from init import app
-
 
 db = SQLAlchemy(app)
 
