@@ -96,7 +96,7 @@ class PlayListSongs(db.Model):
 
 class User(db.Model):
     __tablename__ = 'person'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.String(), primary_key=True)
     username = db.Column(db.String())
     password = db.Column(db.String())
     created= db.Column(db.DateTime())
@@ -108,12 +108,12 @@ class User(db.Model):
         self.created = created
         self.updated = updated
 
-    def __repr__(self):
-        return '<id {}>'.format(self.id)
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'password': self.password
-        }
+    # def __repr__(self):
+    #     return '<id {}>'.format(self.id)
+    #
+    # def serialize(self):
+    #     return {
+    #         'id': self.id,
+    #         'username': self.username,
+    #         'password': self.password
+    #     }

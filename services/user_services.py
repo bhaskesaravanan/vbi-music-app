@@ -20,8 +20,8 @@ class UserServices(object):
             db.session.add(user)
             db.session.commit()
             logging.info(user)
-            logging.info(user.__repr__())
-            return True, user.__repr__()
+            # logging.info(user.__repr__())
+            return True, 'dfdf'
         except Exception as e:
             logging.info(format_exc())
             return False, ''
