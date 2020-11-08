@@ -102,7 +102,8 @@ class User(db.Model):
     created= db.Column(db.DateTime())
     updated = db.Column(db.DateTime())
 
-    def __init__(self, username, password, created, updated):
+    def __init__(self, _id, username, password, created, updated):
+        self.id = _id
         self.username = username
         self.password = password
         self.created = created

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b92c60f9-4c64-4066-b013-1eb5d83b907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/user_services.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +95,7 @@
           <entry key="gitignore" value="63" />
           <entry key="json" value="1" />
           <entry key="new" value="25" />
-          <entry key="py" value="5121" />
+          <entry key="py" value="5168" />
           <entry key="sh" value="171" />
           <entry key="txt" value="70" />
           <entry key="yaml" value="29" />
@@ -104,7 +105,7 @@
         <counts>
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="444" />
-          <entry key="Python" value="5121" />
+          <entry key="Python" value="5168" />
           <entry key="YAML" value="29" />
         </counts>
       </usages-collector>
@@ -115,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
+            <state relative-caret-position="357">
+              <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -127,12 +128,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/user_services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+            <state relative-caret-position="180">
+              <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-                <marker date="1604837674562" expanded="true" signature="157:163" ph="..." />
-                <marker date="1604837674562" expanded="true" signature="157:701" ph="..." />
+                <marker date="1604838438487" expanded="true" signature="180:186" ph="..." />
+                <marker date="1604838438487" expanded="true" signature="180:757" ph="..." />
               </folding>
             </state>
           </provider>
@@ -272,8 +273,8 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/init.py" />
-        <option value="$PROJECT_DIR$/services/user_services.py" />
         <option value="$PROJECT_DIR$/views/login_view.py" />
+        <option value="$PROJECT_DIR$/services/user_services.py" />
         <option value="$PROJECT_DIR$/models/models.py" />
       </list>
     </option>
@@ -594,20 +595,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/services/user_services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        <state relative-caret-position="180">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-            <marker date="1604837674562" expanded="true" signature="157:163" ph="..." />
-            <marker date="1604837674562" expanded="true" signature="157:701" ph="..." />
+            <marker date="1604838438487" expanded="true" signature="180:186" ph="..." />
+            <marker date="1604838438487" expanded="true" signature="180:757" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
+        <state relative-caret-position="357">
+          <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
