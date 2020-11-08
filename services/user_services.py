@@ -1,5 +1,5 @@
 from models.models import User
-from models import db
+from main import db
 import logging
 from traceback import format_exc
 class UserServices(object):

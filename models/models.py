@@ -1,4 +1,5 @@
-from models import db
+from main import db
+
 
 class Songs(db.Model):
     __tablename__ = 'Songs'
@@ -79,6 +80,7 @@ class PlayListSongs(db.Model):
 
 class User(db.Model):
     __tablename__ = 'User'
+    id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String())
     password = db.Column(db.String())
     # created_date = ndb.DateTimeProperty(auto_now_add=True)

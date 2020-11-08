@@ -5,9 +5,6 @@ from uuid import uuid4
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from views.login_view import LOGIN_VIEW
-from views.playlist_view import PLAYLIST_VIEW
-from views.song_view import SONG_VIEW
 
 app = Flask(__name__)
 # app.wsgi_app = ndb_wsgi_middleware(app.wsgi_app)
@@ -23,17 +20,14 @@ else:
 
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
-# db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")
 
-app.register_blueprint(LOGIN_VIEW)
-app.register_blueprint(PLAYLIST_VIEW)
-app.register_blueprint(SONG_VIEW)
-
 
 if __name__ == '__main__':
+    import routes
     app.run(debug=True)
 

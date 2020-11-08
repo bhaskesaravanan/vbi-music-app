@@ -1,6 +1,6 @@
 # from google.cloud import ndb
 
-from main import db
+# from main import db
 #
 # client = ndb.Client()
 #
@@ -12,7 +12,7 @@ from main import db
 #     return middleware
 
 
-from flask_sqlalchemy import SQLAlchemy
-from main import app
-
-db = SQLAlchemy(app)
+# from flask_sqlalchemy import SQLAlchemy
+# from main import app
+#
+# db = SQLAlchemy(app)
