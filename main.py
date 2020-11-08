@@ -18,7 +18,7 @@ else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wcttsgpyytkceu:21e888fbc7ec83949c7cc34d2fcecc13dfa53686bfd1430063b24b4111750b4d@ec2-54-217-224-85.eu-west-1.compute.amazonaws.com:5432/d8420c3edq2tbg'
 
-app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
@@ -28,12 +28,6 @@ app.static_folder = os.path.join(app.root_path, "static")
 
 
 if __name__ == '__main__':
-    from views.login_view import LOGIN_VIEW
-    from views.playlist_view import PLAYLIST_VIEW
-    from views.song_view import SONG_VIEW
-
-    app.register_blueprint(LOGIN_VIEW)
-    app.register_blueprint(PLAYLIST_VIEW)
-    app.register_blueprint(SONG_VIEW)
+    from routes import *
     app.run(debug=True)
 
