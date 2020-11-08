@@ -11,6 +11,7 @@ class UserServices(object):
     def save_user(cls, user_name, password):
         try:
             user = User(
+                _id=str(uuid4()),
                 username=user_name,
                 password=password,
                 created=datetime.now(),
