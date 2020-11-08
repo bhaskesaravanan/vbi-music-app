@@ -28,6 +28,6 @@ app.static_folder = os.path.join(app.root_path, "static")
 
 
 if __name__ == '__main__':
-    import routes
+    from routes import *
     app.run(debug=True)
 
