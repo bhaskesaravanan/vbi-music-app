@@ -6,7 +6,6 @@ export async function fetchSongs(playlist_id=null) {
       const reqObj = {
         headers: {
           "Content-Type": "application/json",
-        //   Authorization: `Bearer ${clientToken}`,
         }
       };
       const result = await fetch(url, reqObj);
@@ -26,7 +25,7 @@ try {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${clientToken}`,
+        "x-api-key": payload.user_id,
     },
     body: JSON.stringify(payload),
     };
@@ -46,7 +45,7 @@ export async function deleteSongsFromPlayList(payload) {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${clientToken}`,
+            "x-api-key": payload.user_id,
         },
         body: JSON.stringify(payload),
         };
@@ -66,7 +65,7 @@ export async function savePlayList(payload) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${clientToken}`,
+            "x-api-key": payload.user_id,
         },
         body: JSON.stringify(payload),
         };
@@ -87,7 +86,7 @@ export async function fetchPlayList(user_id=null) {
         const reqObj = {
         headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${clientToken}`,
+            "x-api-key": user_id,
         },
         };
         const result = await fetch(url, reqObj);
@@ -105,6 +104,66 @@ export async function deletePlayList(payload) {
     try {
         const reqObj = {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": payload.user_id,
+        },
+        body: JSON.stringify(payload),
+        };
+        const result = await fetch(url, reqObj);
+        const response = await result.json();
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+    return null;
+}
+
+export async function signup(payload) {
+    const url = `/signup`;
+    try {
+        const reqObj = {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${clientToken}`,
+        },
+        body: JSON.stringify(payload),
+        };
+        const result = await fetch(url, reqObj);
+        const response = await result.json();
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+    return null;
+}
+
+export async function login(payload) {
+    const url = `/login`;
+    try {
+        const reqObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${clientToken}`,
+        },
+        body: JSON.stringify(payload),
+        };
+        const result = await fetch(url, reqObj);
+        const response = await result.json();
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+    return null;
+}
+
+export async function logout(payload) {
+    const url = `/logout`;
+    try {
+        const reqObj = {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
             // Authorization: `Bearer ${clientToken}`,

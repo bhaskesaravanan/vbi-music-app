@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+app.secret_key = 'qwertyuioplkjhgfdsazxcvbnm'
 root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")

@@ -28,7 +28,7 @@ function LoginPopup(props) {
 
     function signup() {
         let {
-            signupUserName,
+            loginUserName,
             signupPassword,
             signupRePswd,
         } = signupInfo;
@@ -48,6 +48,13 @@ function LoginPopup(props) {
         props.signupProcess({
             userName: signupUserName,
             password: signupPassword
+        });
+    }
+
+    function login() {
+        props.login({
+            userName: signupUserName,
+            password: loginPassword
         });
     }
 
@@ -79,7 +86,7 @@ function LoginPopup(props) {
                         onChange={(e)=>setLoginPassword(e.target.value)}
                     />
 
-                    <Button content='Login' primary />
+                    <Button content='Login' primary  onClick={()=>login()}/>
                     </Form>
                 </Grid.Column>
 

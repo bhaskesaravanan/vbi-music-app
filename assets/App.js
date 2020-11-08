@@ -26,7 +26,8 @@ export class App extends Component {
       showPlayListModel: false,
       songId: '',
       songOffset: 1,
-      loginPopup: true
+      loginPopup: false,
+      isLogin: false
 
     }
   }
@@ -47,7 +48,7 @@ export class App extends Component {
   }
 
   async fetchPlayList() {
-    let playListResponse = await apis.fetchPlayList("");
+    let playListResponse = await apis.fetchPlayList(window.user_id);
     if(!playListResponse || !playListResponse.success) 
       return this.setState({
         playLists: []
@@ -90,7 +91,8 @@ export class App extends Component {
   async deletePlayList(id) {
     let listOfPlayList  = this.state.playLists;
     let payload = {
-      'user_id': '2342'
+      'user_id': window.user_id,
+      'playlist_id': id
     }
     let playListResponse = await apis.deletePlayList(payload);
     if(!playListResponse || !playListResponse.success) {
@@ -104,6 +106,10 @@ export class App extends Component {
   }
 
   showCreatePlaylist(show) {
+    if(!this.state.isLogin&&!window.user_id) {
+      this.showLoginPppup(true)
+      return;
+    }
     this.setState({
       createPlaylist: show
     })
@@ -116,13 +122,21 @@ export class App extends Component {
   }
 
   async addPlayList(name) {
+    if(!this.state.isLogin&&!window.user_id) {
+      this.showLoginPppup(true)
+      return;
+    }
     let listOfPlayList  = [...this.state.playLists];
     let payload = {
       'playlist_name': name,
-      'user_id': ''
+      'user_id': window.user_id
     }
     let playListResponse = await apis.savePlayList(payload);
     if(!playListResponse || !playListResponse.success) {
+      if(!playListResponse.login_required) {
+        this.showLoginPppup(true);
+        return;
+      }
       console.log('playlist add failed')
       return 
     }
@@ -149,7 +163,7 @@ export class App extends Component {
     let payload = {
       'playlist_id': selectedPlayList,
       'song_id': songId,
-      'user_id': '234f34'
+      'user_id': window.user_id
     }
     let playListResponse = await apis.deleteSongsFromPlayList(payload);
     if(!playListResponse || !playListResponse.success) {
@@ -184,7 +198,7 @@ export class App extends Component {
     let { playListSongs, songList } = this.state;
     let payload = {
       'song_id': songId,
-      'user_id': '234f34',
+      'user_id': window.user_id,
       'playlist_id': selectedPlayList
     }
     let playListResponse = await apis.addSongsToPlayList(payload);
@@ -212,17 +226,30 @@ export class App extends Component {
     })
   }
 
-  login(payload) {
+  async login(payload) {
     console.log(payload)
+    let loginResponse = await apis.login(payload);
+    if(!loginResponse || !loginResponse.success) {
+      console.log('login failed');
+      return ;
+    }
+    window.user_id = loginResponse.user_id
     this.setState({
-      loginPopup: false
+      loginPopup: false,
+      isLogin: true
     })
   }
 
-  signupProcess(payload) {
+  async signupProcess(payload) {
     console.log(payload)
+    let loginResponse = await apis.signup(payload);
+    if(!loginResponse || !loginResponse.success) {
+      console.log('login failed');
+      return ;
+    }
     this.setState({
-      loginPopup: false
+      loginPopup: false,
+      isLogin: true
     })
   }
 

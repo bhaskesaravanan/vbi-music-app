@@ -5,8 +5,8 @@ from uuid import uuid4
 from traceback import format_exc
 from datetime import datetime
 
-class UserServices(object):
 
+class UserServices(object):
     @classmethod
     def save_user(cls, user_name, password):
         try:
