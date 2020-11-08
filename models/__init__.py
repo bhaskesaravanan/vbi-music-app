@@ -16,3 +16,10 @@
 # from main import app
 #
 # db = SQLAlchemy(app)
+
+# from flask_sqlalchemy import SQLAlchemy
+
+# sql_alchemy = SQLAlchemy()
+# engine = sql_alchemy.create_engine("postgresql://postgres:123456@localhost/vbi",{})
+# db = sql_alchemy.create_scoped_session(sql_alchemy.create_session(engine))
+
