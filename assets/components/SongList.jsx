@@ -1,12 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Segment } from 'semantic-ui-react';
-import { Header, Table, Icon } from 'semantic-ui-react'
+import { Header, Table, Icon, Button } from 'semantic-ui-react'
 
 
 function SongList(props) {
+    const [visibleSong, setVisibleSong] = useState([])
+    useEffect(() => {
+        let totalSongs = (props.songOffset * 7) - 1;
+        let startIndex = totalSongs - 7;
+        let endIndex = totalSongs;
+        let songs = props.songList.filter((song,index)=>
+            index>=startIndex && index<=endIndex
+        );
+        setVisibleSong(songs)
+    }, [props.songOffset])
+
+    function shuffleSongs() {
+        let songList = [...visibleSong];
+
+        for (let i = songList.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [songList[i], songList[j]] = [songList[j], songList[i]];
+        }
+    setVisibleSong(songList)
+    }
+
     return (
         <Segment className="music-segment" attached="bottom" loading={props.songloader}>
             {props.showPlayListSong && 
+                <React.Fragment>
                 <a href="#"style={{
                     'color': "black",
                     'fontSize': "medium"
@@ -16,7 +38,26 @@ function SongList(props) {
                     <Icon name="arrow left" size="large" color="black"/>
                     Back
                 </a>
+                <div className ="shuffle-btn">
+                    <Button 
+                        animated 
+                        floated="right" 
+                        className="add-playlist" 
+                        color="blue"
+                        onClick={()=>shuffleSongs()}
+                    >
+                        <Button.Content visible>Shuffle Playlist</Button.Content>
+                        <Button.Content hidden>
+                            <Icon name='shuffle' />
+                        </Button.Content>
+                    </Button>
+                 </div>
+                
+                </React.Fragment>
+
+                
             }
+
             <div className="song-list">
                 <Table basic='very' celled collapsing>
                     <Table.Header>
@@ -31,7 +72,7 @@ function SongList(props) {
 
                     <Table.Body>
                         {
-                            props.songList.map(
+                            visibleSong.map(
                                 (song, index) =>{
                                     return(
                                     <Table.Row key={song.id}>

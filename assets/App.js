@@ -8,6 +8,7 @@ import PlayList from './components/Playlist';
 import Paginations from './components/Paginations'
 import CreatePlaylist from './components/popups/CreatePlaylist';
 import PlayListModel from './components/popups/PlayListModel';
+import LoginPopup from './components/popups/LoginPopup';
 
 export class App extends Component {
   constructor(){
@@ -23,7 +24,10 @@ export class App extends Component {
       createPlaylist: false,
       search: false,
       showPlayListModel: false,
-      songId: ''
+      songId: '',
+      songOffset: 1,
+      loginPopup: true
+
     }
   }
 
@@ -102,6 +106,12 @@ export class App extends Component {
   showCreatePlaylist(show) {
     this.setState({
       createPlaylist: show
+    })
+  }
+
+  showLoginPppup(show) {
+    this.setState({
+      loginPopup: show
     })
   }
 
@@ -196,6 +206,26 @@ export class App extends Component {
     });
   }
 
+  setPagination(page){
+    this.setState({
+      songOffset: page
+    })
+  }
+
+  login(payload) {
+    console.log(payload)
+    this.setState({
+      loginPopup: false
+    })
+  }
+
+  signupProcess(payload) {
+    console.log(payload)
+    this.setState({
+      loginPopup: false
+    })
+  }
+
   render() {
     let{
       activeMenu,
@@ -208,7 +238,9 @@ export class App extends Component {
       createPlaylist,
       search,
       showPlayListModel,
-      songId
+      songId,
+      songOffset,
+      loginPopup
     } = this.state;
 
     songList = showPlayListSong && !search ? playListSongs[selectedPlayList]: songList; 
@@ -233,6 +265,7 @@ export class App extends Component {
             : 
             songList.length>=1&&
             <SongList 
+              songOffset={songOffset}
               songloader={songloader} 
               songList={songList}
               showPlayListSong={showPlayListSong}
@@ -243,7 +276,7 @@ export class App extends Component {
             />
           }
           {activeMenu !== 'playList' && songList.length >= 1 &&
-          <Paginations />
+          <Paginations setPagination={this.setPagination.bind(this)} />
         }
         </div>
         <CreatePlaylist 
@@ -258,6 +291,12 @@ export class App extends Component {
           showPlayListModel={showPlayListModel}
           showPlayListModal={this.showPlayListModal.bind(this)}
           addSongsToPlaylist={this.addSongsToPlaylist.bind(this)}
+        />
+        <LoginPopup 
+          loginPopup={loginPopup} 
+          showLoginPppup={this.showLoginPppup.bind(this)}
+          signupProcess={this.signupProcess.bind(this)}
+          login={this.login.bind(this)}
         />
       </div>
     )
