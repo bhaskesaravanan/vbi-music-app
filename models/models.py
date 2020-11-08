@@ -1,4 +1,4 @@
-from main import db
+from init import db
 import logging
 
 class Songs(db.Model):

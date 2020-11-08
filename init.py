@@ -3,11 +3,14 @@ import sys
 import logging
 from uuid import uuid4
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")
+db = SQLAlchemy(app)
 
 logging.basicConfig(level=logging.INFO)
 
