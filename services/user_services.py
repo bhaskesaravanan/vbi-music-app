@@ -4,6 +4,7 @@ import logging
 from traceback import format_exc
 
 class UserServices(object):
+
     @classmethod
     def save_user(cls, user_name, password):
         try:

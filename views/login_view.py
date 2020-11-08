@@ -1,14 +1,11 @@
 from flask import Blueprint, render_template, request, jsonify
 from services.user_services import UserServices
-from main import app
 
 LOGIN_VIEW = Blueprint(
     'login_pages',
     __name__,
     template_folder='templates'
 )
-
-app.register_blueprint(LOGIN_VIEW)
 
 
 @LOGIN_VIEW.route('/')

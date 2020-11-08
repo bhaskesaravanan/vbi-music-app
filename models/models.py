@@ -1,4 +1,5 @@
 from main import db
+import logging
 
 class Songs(db.Model):
     __tablename__ = 'Songs'
@@ -26,6 +27,22 @@ class Songs(db.Model):
             'album': self.album,
             'duration': self.duration
         }
+
+    @classmethod
+    def save_user(cls, user_name, password):
+        try:
+            user = User(
+                user_name=user_name,
+                password=password
+            )
+            db.session.add(user)
+            db.session.commit()
+            logging.info(user)
+            logging.info(user.__repr__())
+            return True, user.__repr__()
+        except Exception as e:
+            logging.info(format_exc())
+            return False, ''
 
 
 class Playlist(db.Model):
