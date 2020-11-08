@@ -29,7 +29,7 @@ class UserServices(object):
     @classmethod
     def fetch_user(cls, user_name):
         try:
-            user = User.query().filter_by(username=user_name).first()
+            user = User.query.filter_by(username=user_name).first()
             return user
         except Exception as e:
             logging.info(format_exc())
