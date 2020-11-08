@@ -18,7 +18,7 @@ def signup():
     payload=request.get_json(force=True)
     user_name = payload.get('user_name')
     password = payload.get('password')
-    user_success, user_id = UserServices.save_user(user_name, password=password)
+    user_success, user_id = UserServices.save_user(user_name=user_name, password=password)
     return jsonify({
         'success': user_success,
         'user_id': user_id

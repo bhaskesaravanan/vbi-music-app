@@ -2,6 +2,7 @@ from models.models import User
 from init import db
 import logging
 from traceback import format_exc
+from datetime import datetime
 
 class UserServices(object):
 
@@ -10,7 +11,9 @@ class UserServices(object):
         try:
             user = User(
                 username=user_name,
-                password=password
+                password=password,
+                created=datetime.now(),
+                updated=datetime.now()
             )
             db.session.add(user)
             db.session.commit()

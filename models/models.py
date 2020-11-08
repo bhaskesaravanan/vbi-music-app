@@ -99,12 +99,14 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String())
     password = db.Column(db.String())
-    # created_date = ndb.DateTimeProperty(auto_now_add=True)
-    # updated_date = ndb.DateProperty(auto_now=True)
+    created= db.Column(db.timestamp())
+    updated = db.Column(db.timestamp())
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, created, updated):
         self.username = username
-        self.username = password
+        self.password = password
+        self.created = created
+        self.updated = updated
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
