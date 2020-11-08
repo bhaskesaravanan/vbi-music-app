@@ -95,7 +95,7 @@ class PlayListSongs(db.Model):
 
 
 class User(db.Model):
-    __tablename__ = 'User'
+    __tablename__ = 'person'
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String())
     password = db.Column(db.String())
