@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b92c60f9-4c64-4066-b013-1eb5d83b907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/user_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/user_services.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +94,7 @@
           <entry key="gitignore" value="63" />
           <entry key="json" value="1" />
           <entry key="new" value="25" />
-          <entry key="py" value="5193" />
+          <entry key="py" value="5209" />
           <entry key="sh" value="171" />
           <entry key="txt" value="70" />
           <entry key="yaml" value="29" />
@@ -105,7 +104,7 @@
         <counts>
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="444" />
-          <entry key="Python" value="5193" />
+          <entry key="Python" value="5209" />
           <entry key="YAML" value="29" />
         </counts>
       </usages-collector>
@@ -113,11 +112,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
+            <state relative-caret-position="567">
+              <caret line="118" column="11" lean-forward="true" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -125,15 +124,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/user_services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-                <marker date="1604839496127" expanded="true" signature="180:186" ph="..." />
-                <marker date="1604839496127" expanded="true" signature="180:750" ph="..." />
+                <marker date="1604839647993" expanded="true" signature="180:186" ph="..." />
+                <marker date="1604839647993" expanded="true" signature="180:717" ph="..." />
               </folding>
             </state>
           </provider>
@@ -274,8 +273,8 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/init.py" />
         <option value="$PROJECT_DIR$/views/login_view.py" />
-        <option value="$PROJECT_DIR$/models/models.py" />
         <option value="$PROJECT_DIR$/services/user_services.py" />
+        <option value="$PROJECT_DIR$/models/models.py" />
       </list>
     </option>
   </component>
@@ -583,16 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -605,12 +594,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/services/user_services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-            <marker date="1604839496127" expanded="true" signature="180:186" ph="..." />
-            <marker date="1604839496127" expanded="true" signature="180:750" ph="..." />
+            <marker date="1604839647993" expanded="true" signature="180:186" ph="..." />
+            <marker date="1604839647993" expanded="true" signature="180:717" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="118" column="11" lean-forward="true" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
