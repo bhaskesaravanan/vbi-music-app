@@ -1,4 +1,6 @@
 # from google.cloud import ndb
+
+from main import db
 #
 # client = ndb.Client()
 #
@@ -8,3 +10,9 @@
 #         with client.context():
 #             return wsgi_app(environ, start_response)
 #     return middleware
+
+
+from flask_sqlalchemy import SQLAlchemy
+from main import app
+
+db = SQLAlchemy(app)

@@ -1,4 +1,4 @@
-from main import db
+from models import db
 import logging
 from models.models import Playlist, PlayListSongs
 

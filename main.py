@@ -23,8 +23,8 @@ else:
 
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+# db = SQLAlchemy(app)
+
 root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")
