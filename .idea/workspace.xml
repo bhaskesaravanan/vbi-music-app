@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b92c60f9-4c64-4066-b013-1eb5d83b907c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,7 +68,7 @@
           <entry key="js" value="1" />
           <entry key="json" value="3" />
           <entry key="new" value="1" />
-          <entry key="py" value="15" />
+          <entry key="py" value="16" />
           <entry key="sh" value="1" />
           <entry key="txt" value="2" />
           <entry key="yaml" value="1" />
@@ -81,7 +80,7 @@
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="15" />
+          <entry key="Python" value="16" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -125,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -178,11 +177,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="41" />
+            <state relative-caret-position="420">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1604829037470" expanded="true" signature="878:880" ph="..." />
+                <marker date="1604830016877" expanded="true" signature="844:845" ph="..." />
               </folding>
             </state>
           </provider>
@@ -191,11 +190,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            <state relative-caret-position="90">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/flask/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="1134" column="8" selection-start-line="1134" selection-start-column="8" selection-end-line="1134" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -208,18 +216,6 @@
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
                 <marker date="1604822499548" expanded="true" signature="465:470" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/song_view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <marker date="1604775425395" expanded="true" signature="1820:1821" ph="..." />
               </folding>
             </state>
           </provider>
@@ -537,17 +533,24 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="1134" column="8" selection-start-line="1134" selection-start-column="8" selection-end-line="1134" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -563,11 +566,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="41" />
+        <state relative-caret-position="420">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1604829037470" expanded="true" signature="878:880" ph="..." />
+            <marker date="1604830016877" expanded="true" signature="844:845" ph="..." />
           </folding>
         </state>
       </provider>

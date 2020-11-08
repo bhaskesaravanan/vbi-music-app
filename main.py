@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from uuid import uuid4
-from flask import Flask, render_template, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -25,7 +25,6 @@ db = SQLAlchemy(app)
 root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")
-
 
 if __name__ == '__main__':
     from routes import *
