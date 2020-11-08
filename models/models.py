@@ -97,14 +97,14 @@ class PlayListSongs(db.Model):
 class User(db.Model):
     __tablename__ = 'person'
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String())
+    username = db.Column(db.String())
     password = db.Column(db.String())
     # created_date = ndb.DateTimeProperty(auto_now_add=True)
     # updated_date = ndb.DateProperty(auto_now=True)
 
-    def __init__(self, user_name, password):
-        self.user_name = user_name
-        self.password = password
+    def __init__(self, username, password):
+        self.username = username
+        self.username = password
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
@@ -112,6 +112,6 @@ class User(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'user_name': self.user_name,
+            'username': self.username,
             'password': self.password
         }

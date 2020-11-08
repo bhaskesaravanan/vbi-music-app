@@ -9,7 +9,7 @@ class UserServices(object):
     def save_user(cls, user_name, password):
         try:
             user = User(
-                user_name=user_name,
+                username=user_name,
                 password=password
             )
             db.session.add(user)
