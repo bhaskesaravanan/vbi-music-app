@@ -2,8 +2,8 @@ from models.models import User
 from main import db
 import logging
 from traceback import format_exc
-class UserServices(object):
 
+class UserServices(object):
     @classmethod
     def save_user(cls, user_name, password):
         try:

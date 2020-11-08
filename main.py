@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from uuid import uuid4
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -25,9 +25,13 @@ root_path = os.path.abspath('.')
 sys.path.insert(0, root_path)
 app.static_folder = os.path.join(app.root_path, "static")
 
+# @app.route('/')
+# def render():
+#     return render_template('index.html')
+
 
 if __name__ == '__main__':
-    from routes import register_blueprints
-    register_blueprints(app)
+    # from routes import register_blueprints
+    # register_blueprints(app)
     app.run(debug=True)
 

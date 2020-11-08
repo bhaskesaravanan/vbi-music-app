@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from main import app
 
 SONG_VIEW = Blueprint(
     'song_views',
     __name__,
     template_folder='templates'
 )
+app.register_blueprint(SONG_VIEW)
 
 
 @SONG_VIEW.route('/api/songs')
