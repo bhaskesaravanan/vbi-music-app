@@ -28,7 +28,7 @@ def signup():
     })
 
 
-@LOGIN_VIEW.route('/login')
+@LOGIN_VIEW.route('/login', methods=["POST"])
 def login():
     payload=request.get_json(force=True)
     username=payload.get('username')

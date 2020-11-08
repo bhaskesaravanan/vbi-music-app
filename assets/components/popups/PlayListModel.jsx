@@ -14,7 +14,7 @@ function PlayListModel(props) {
         <Modal.Description>
             {   props.playLists.map((list)=>
                 <span key={list.id} className="play-list-name" onClick={()=>props.addSongsToPlaylist(props.songId, list.id )}>
-                    PlayList-1
+                    {list.name}
                 </span>
             )}
             </ Modal.Description>

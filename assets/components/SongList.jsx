@@ -1,29 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import { Segment } from 'semantic-ui-react';
 import { Header, Table, Icon, Button } from 'semantic-ui-react'
+import { songList } from '../constant';
 
 
 function SongList(props) {
     const [visibleSong, setVisibleSong] = useState([])
     useEffect(() => {
-        let totalSongs = (props.songOffset * 7) - 1;
-        let startIndex = totalSongs - 7;
-        let endIndex = totalSongs;
-        let songs = props.songList.filter((song,index)=>
-            index>=startIndex && index<=endIndex
-        );
-        setVisibleSong(songs)
-    }, [props.songOffset])
+        // let totalSongs = (props.songOffset * 7) - 1;
+        // let startIndex = totalSongs - 7;
+        // let endIndex = totalSongs;
+        // let songs = props.songList.filter((song,index)=>
+        //     index>=startIndex && index<=endIndex
+        // );
+        setVisibleSong(props.songList)
+    }, [])
 
-    function shuffleSongs() {
-        let songList = [...visibleSong];
-
-        for (let i = songList.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [songList[i], songList[j]] = [songList[j], songList[i]];
+        function shuffleSongs() {
+            let visibleSongList = [...visibleSong]
+            let songList = visibleSongList.sort(() => Math.random() - 0.5);
+            setVisibleSong(songList)
         }
-    setVisibleSong(songList)
-    }
 
     return (
         <Segment className="music-segment" attached="bottom" loading={props.songloader}>
@@ -38,13 +35,12 @@ function SongList(props) {
                     <Icon name="arrow left" size="large" color="black"/>
                     Back
                 </a>
-                <div className ="shuffle-btn">
+                <div className ="shuffle-btn" onClick={()=>shuffleSongs()}>
                     <Button 
                         animated 
                         floated="right" 
                         className="add-playlist" 
                         color="blue"
-                        onClick={()=>shuffleSongs()}
                     >
                         <Button.Content visible>Shuffle Playlist</Button.Content>
                         <Button.Content hidden>
@@ -75,7 +71,7 @@ function SongList(props) {
                             visibleSong.map(
                                 (song, index) =>{
                                     return(
-                                    <Table.Row key={song.id}>
+                                    <Table.Row key={index}>
                                         <Table.Cell>
                                             {index+1}
                                             </Table.Cell>

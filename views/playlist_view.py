@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from services.playlist_services import PlayListServices
+from services.song_services import SongServices
 import logging
 
 from helper import authenticate
@@ -58,7 +59,7 @@ def add_songs_to_playlist():
     success, playlist_response = PlayListServices.add_songs_to_playlist(song_id, playlist_id, user_id)
     return jsonify({
         'success': success,
-        'playlist_response': playlist_response
+        'playlist_response': playlist_response,
     })
 
 
@@ -69,7 +70,7 @@ def delete_songs_to_playlist():
     user_id = payload.get('user_id')
     playlist_id = payload.get('playlist_id')
     song_id = payload.get('song_id')
-    success: PlayListServices.delete_songs_from_playlist(song_id, playlist_id)
+    success = PlayListServices.delete_songs_from_playlist(song_id, playlist_id)
     return jsonify({
-        'success': True,
+        'success': success
     })

@@ -28,7 +28,7 @@ function LoginPopup(props) {
 
     function signup() {
         let {
-            loginUserName,
+            signupUserName,
             signupPassword,
             signupRePswd,
         } = signupInfo;
@@ -53,7 +53,7 @@ function LoginPopup(props) {
 
     function login() {
         props.login({
-            userName: signupUserName,
+            userName: loginUserName,
             password: loginPassword
         });
     }
@@ -75,7 +75,6 @@ function LoginPopup(props) {
                         placeholder='Username'
                         value={loginUserName}
                         onChange={(e)=>setLoginName(e.target.value)}
-                        onBlur
                     />
                     <Form.Input
                         icon='lock'

@@ -7,6 +7,11 @@ def authenticate():
         def wrap(self, *args, **kwargs):
             api_key = self.request.headers.get('x-api-key')
             logging.info('api_key : %s', api_key)
+            if not api_key:
+                return jsonify({
+                    'success': False,
+                    'login_required': True
+                })
 
             if session['username'] == api_key :
                 return method(self, *args, **kwargs)

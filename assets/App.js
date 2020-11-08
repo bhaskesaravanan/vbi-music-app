@@ -40,7 +40,8 @@ export class App extends Component {
   }
 
   async handleMenu(menu) {
-    await this.fetchPlayList();
+    if(window.user_id)
+      await this.fetchPlayList();
     this.setState({
       activeMenu: menu,
       showPlayListSong: false
@@ -49,10 +50,15 @@ export class App extends Component {
 
   async fetchPlayList() {
     let playListResponse = await apis.fetchPlayList(window.user_id);
-    if(!playListResponse || !playListResponse.success) 
+    if(!playListResponse || !playListResponse.success) {
+      if(!playListResponse.login_required) {
+        this.showLoginPppup(true);
+        return;
+      }
       return this.setState({
         playLists: []
       });
+    }
     let playLists = playListResponse.playlists;
     this.setState({
       playLists
@@ -80,8 +86,13 @@ export class App extends Component {
     });
   }
 
-  async fetchSongs(playlistId=this.state.selectedPlayList) {
-    let songListResponse = await apis.fetchSongs(playlistId);
+  async fetchSongs(playlistId=this.state.selectedPlayList, search=false) {
+    let songListResponse; 
+    if(search){
+      songListResponse = await apis.fetchSongs();
+    } else{ 
+      songListResponse = await apis.fetchSongs(playlistId);
+    }
     if(!songListResponse || !songListResponse.success) 
       return []
     let songList = songListResponse.song_list;
@@ -150,7 +161,7 @@ export class App extends Component {
 
   async searchSongs(search) {
     console.log(search);
-    let songList = await this.fetchSongs();
+    let songList = await this.fetchSongs('', true);
     this.setState({
       songList,
       showPlayListSong: true,
@@ -159,7 +170,8 @@ export class App extends Component {
   }
 
   async deleteSongsFromPlaylist(songId) {
-    let { playListSongs, selectedPlayList } = this.state;
+    let playListSongs = this.state.playListSongs; 
+    let selectedPlayList  = this.state.selectedPlayList;
     let payload = {
       'playlist_id': selectedPlayList,
       'song_id': songId,
@@ -179,6 +191,11 @@ export class App extends Component {
   }
 
   async showPlayListModal(show, songId='') {
+    if(!this.state.isLogin && !window.user_id) {
+      this.showLoginPppup(true)
+      return;
+    }
+
     if(!show) {
       this.setState({
         songId,
@@ -208,7 +225,7 @@ export class App extends Component {
     }
     let songObject = songList.filter(song => song.id===songId);
     if(!Object.keys(playListSongs).length || !playListSongs[selectedPlayList].length) {
-      playListSongs[selectedPlayList] = [songObject]
+      playListSongs[selectedPlayList] = songObject
     }
     else{
       playListSongs[selectedPlayList].push(songObject[0]);
@@ -227,7 +244,6 @@ export class App extends Component {
   }
 
   async login(payload) {
-    console.log(payload)
     let loginResponse = await apis.login(payload);
     if(!loginResponse || !loginResponse.success) {
       console.log('login failed');
@@ -302,9 +318,9 @@ export class App extends Component {
               showPlayListModal={this.showPlayListModal.bind(this)}
             />
           }
-          {activeMenu !== 'playList' && songList.length >= 1 &&
+          {/* {activeMenu !== 'playList' && songList.length >= 1 &&
           <Paginations setPagination={this.setPagination.bind(this)} />
-        }
+        } */}
         </div>
         <CreatePlaylist 
           createPlaylist={createPlaylist}

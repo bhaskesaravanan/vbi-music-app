@@ -33,14 +33,14 @@ class PlayListServices(object):
         try:
             Playlist.query.filter_by(id=playlist_id).delete()
             db.session.commit()
-            cls.playlist_songs_by_playlist_id(playlist_id)
+            cls.delete_playlist_songs_by_playlist_id(playlist_id)
             return True
         except Exception as e:
             logging.info(traceback.format_exc())
             return False
 
     @classmethod
-    def playlist_songs_by_playlist_id(cls, playlist_id):
+    def delete_playlist_songs_by_playlist_id(cls, playlist_id):
         playlists = PlayListSongs.query.filter_by(playlist_id=playlist_id).delete()
         # for playlist in playlists:
         #     db.session.delete(playlist)
@@ -49,6 +49,10 @@ class PlayListServices(object):
     @classmethod
     def add_songs_to_playlist(cls, song_id, playlist_id, user_id):
         try:
+            isExistSong = cls.fetch_playlist_song_by_id(song_id, playlist_id)
+            if isExistSong:
+                return False, []
+
             playlist_song = PlayListSongs(
                 _id=str(uuid4()),
                 playlist_id=playlist_id,
@@ -65,12 +69,32 @@ class PlayListServices(object):
             return False, []
 
     @classmethod
+    def fetch_songs_for_playlist(cls, playlist_id):
+        song_list = PlayListSongs.query.filter_by(
+            playlist_id=playlist_id,
+        ).all()
+        list_of_song = ([song.serialize() for song in song_list])
+        return list_of_song
+
+    @classmethod
+    def fetch_playlist_song_by_id(cls, song_id, playlist_id):
+        song_list = PlayListSongs.query.filter_by(
+            playlist_id=playlist_id,
+            song_id=song_id
+        ).first()
+        if not song_list:
+            return None
+        return song_list.serialize()
+
+    @classmethod
     def delete_songs_from_playlist(cls, song_id, playlist_id):
         try:
+            logging.info('first')
             song = PlayListSongs.query.filter_by(
                 playlist_id=playlist_id,
                 song_id=song_id
             ).first()
+            logging.info(song)
             db.session.delete(song)
             db.session.commit()
             return True
