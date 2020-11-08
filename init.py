@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 
 logging.basicConfig(level=logging.INFO)
 
-Env = 'dev'
+Env = 'live'
 if Env == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/vbi'
