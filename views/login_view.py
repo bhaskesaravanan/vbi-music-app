@@ -13,7 +13,7 @@ def index():
     return render_template('index.html')
 
 
-@LOGIN_VIEW.rout('/signup', methods=['POST'])
+@LOGIN_VIEW.route('/signup', methods=['POST'])
 def signup():
     payload=request.get_json(force=True)
     user_name = payload.get('user_name')
