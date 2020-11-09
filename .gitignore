@@ -1,4 +1,5 @@
 venv
+heroku.py
 assets/node_modules
 cred.json
 __pycache__/

@@ -15,7 +15,6 @@ def save_playlist():
     play_list_id = request.args.get('playlist_id')
     user_id = request.args.get('user_id')
     song_list = SongServices.fetch_songs(play_list_id)
-    logging.info(song_list)
     return jsonify({
         'success': True,
         'song_list': song_list
