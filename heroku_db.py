@@ -1,0 +1,1 @@
+db_config = 'postgres://wcttsgpyytkceu:21e888fbc7ec83949c7cc34d2fcecc13dfa53686bfd1430063b24b4111750b4d@ec2-54-217-224-85.eu-west-1.compute.amazonaws.com:5432/d8420c3edq2tbg'
